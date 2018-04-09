@@ -22,3 +22,13 @@ def file2df():
     f.close()
     df = pd.DataFrame({"name":name,"pwd":pwd})
     return df
+
+
+def name_sort(num=10):
+    df = file2df()
+    return df.groupby("name").size().sort_values(ascending=False).head(num)
+
+
+def pwd_sort(num=10):
+    df = file2df()
+    return df.groupby("pwd").size().sort_values(ascending=False).head(num)
